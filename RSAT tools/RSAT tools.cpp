@@ -8,10 +8,10 @@ HINSTANCE hInst; // current instance
 int FirstInit;
 HMENU Menu;
 bool AppStartFailure;
-//LPWSTR UserAccountDialog::UPN = new WCHAR[1000];
-//LPWSTR UserAccountDialog::Password = new WCHAR[1000];
-LPCWSTR UserAccountDialog::UPN = L"Administrator@homelab.local";
-LPCWSTR UserAccountDialog::Password = L"No admin Password for you HAHA!";
+LPWSTR UserAccountDialog::UPN = new WCHAR[1000];
+LPWSTR UserAccountDialog::Password = new WCHAR[1000];
+bool UserAccountSet = false;
+
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPWSTR lpCmdLine, _In_ int nCmdShow)
 {
@@ -122,14 +122,186 @@ LRESULT MainProgram::MainWnd(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
             DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_UserAccount), hWnd, (DLGPROC)UserAccountDialog::UserAccount, lParam);
             break;
         case IDC_DSAC:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
             AppStartFailure = Tool::StartApplication( DSAC, EXE, UserAccountDialog::UPN, UserAccountDialog::Password);
             if (AppStartFailure == false)
                 break;
             break;
         case IDC_DSA:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
             AppStartFailure = Tool::StartApplication(DSA, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
                 if (AppStartFailure == false)
                     break;
+                break;
+        case IDC_DSSITE:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(DSSITE, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_Domain:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(Domain, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_ADSIEDIT:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(ADSIEDIT, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_CertServ:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(CertServ, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_CLUSTERUPDATE:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(CLUSTERUPDATE, EXE, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_DFSMGMT:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(DFSMGMT, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_DHCP:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(DHCP, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_DNS:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(DNS, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_CLUADMIN:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(CLUADMIN, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_FSRM:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(FSRM, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_GPMC:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(GPMC, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_OCSP:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(OCSP, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_RAMGMTUI:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(RAMGMTUI, EXE, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_RRAS:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(RRAS, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+        case IDC_VMW:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(VMW, EXE, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
+            break;
+
+        //why the hell one would still use this is beyond me but its part of the RSAT tools soooo....
+        case IDC_WSUS:
+            if (UserAccountSet == false)
+            {
+                DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_ErrNoAccount), hWnd, (DLGPROC)NoAccountError::ErrNoAcc, lParam);
+                break;
+            };
+            AppStartFailure = Tool::StartApplication(WSUS, MMC, UserAccountDialog::UPN, UserAccountDialog::Password);
+            if (AppStartFailure == false)
+                break;
             break;
         default:
             return DefWindowProc(hWnd, message, wParam, lParam);
@@ -180,8 +352,9 @@ INT_PTR CALLBACK UserAccountDialog::UserAccount(HWND hDlg, UINT message, WPARAM 
         {
         case IDOK:
         {
-            //GetDlgItemText(hDlg, IDC_UserName, UserAccountDialog::UPN, 1000);
-            //GetDlgItemText(hDlg, IDC_Password, UserAccountDialog::Password, 1000);
+            GetDlgItemText(hDlg, IDC_UserName, UserAccountDialog::UPN, 1000);
+            GetDlgItemText(hDlg, IDC_Password, UserAccountDialog::Password, 1000);
+            UserAccountSet = true;
 
             EndDialog(hDlg, LOWORD(wParam));
             return (INT_PTR)TRUE;
@@ -194,6 +367,7 @@ INT_PTR CALLBACK UserAccountDialog::UserAccount(HWND hDlg, UINT message, WPARAM 
         case IDC_ClearAndExit:
                 delete[] UPN;
                 delete[] Password;
+                UserAccountSet = false;
                 EndDialog(hDlg, LOWORD(wParam));
                 return (INT_PTR)TRUE;
                 break;
@@ -201,4 +375,30 @@ INT_PTR CALLBACK UserAccountDialog::UserAccount(HWND hDlg, UINT message, WPARAM 
     }
     return (INT_PTR)FALSE;
 
+}
+
+INT_PTR NoAccountError::ErrNoAcc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+    case WM_INITDIALOG:
+        return (INT_PTR)TRUE;
+
+    case WM_COMMAND:
+        switch (LOWORD(wParam))
+        {
+        case IDOK:
+        {
+            EndDialog(hDlg, LOWORD(wParam));
+            DialogBoxParamW(hInst, MAKEINTRESOURCE(IDD_UserAccount), hDlg, (DLGPROC)UserAccountDialog::UserAccount, lParam);
+            return (INT_PTR)TRUE;
+            break;
+        }
+        case IDCANCEL:
+            EndDialog(hDlg, LOWORD(wParam));
+            return (INT_PTR)TRUE;
+            break;
+        };
+    }
+    return (INT_PTR)FALSE;
 }

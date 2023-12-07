@@ -24,6 +24,7 @@
     <ProjectGuid>{58d9a4c7-39f1-4714-a6af-7ea8bae5fd50}</ProjectGuid>
     <RootNamespace>RSATtools</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>RSAT Launcher</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

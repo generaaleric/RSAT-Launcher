@@ -12,16 +12,31 @@
 #define IDI_SMALL                       108
 #define IDC_RSATTOOLS                   109
 #define IDC_DSAC                        110
-#define IDC_DHCP                        111
-#define IDC_RRAS                        112
-#define IDC_ADFS                        113
-#define IDC_DNS                         114
+#define IDC_DSA                         111
+#define IDC_DSSITE                      112
+#define IDC_Domain                      113
+#define IDC_ADSIEDIT                    114
+#define IDC_CertServ                    115
+#define IDC_CLUSTERUPDATE               116
+#define IDC_DFSMGMT                     117
+#define IDC_DHCP                        118
+#define IDC_DNS                         119
+#define IDC_CLUADMIN                    120
+#define IDC_FSRM                        121
+#define IDC_GPMC                        122
+#define IDC_OCSP                        123
+#define IDC_RAMGMTUI                    124
+#define IDC_RRAS                        125
+#define IDC_VMW                         126
+#define IDC_WSUS                        127
 #define IDD_UserAccount                 129
 #define IDD_FORMVIEW_MAINWINDOW         135
+#define IDD_NoAccount                   137
+#define IDD_ErrNoAccount                137
+#define IDD_DIALOG2                     138
 #define IDC_Password                    1000
 #define IDC_UserName                    1001
 #define IDC_ClearAndExit                1002
-#define IDC_DSA                         1021
 #define IDM_UserAccount                 32775
 #define IDC_STATIC                      -1
 
@@ -30,9 +45,9 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         32778
-#define _APS_NEXT_CONTROL_VALUE         1022
+#define _APS_NEXT_CONTROL_VALUE         1024
 #define _APS_NEXT_SYMED_VALUE           115
 #endif
 #endif

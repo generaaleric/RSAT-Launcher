@@ -33,8 +33,8 @@ class UserAccountDialog
 {
 public:
 	static int WeHaveSetTheseAlready;
-	static LPCWSTR UPN;
-	static LPCWSTR Password;
+	static LPWSTR UPN;
+	static LPWSTR Password;
 
 
 	static INT_PTR CALLBACK UserAccount(HWND, UINT, WPARAM);
@@ -47,6 +47,11 @@ public:
 	static INT_PTR CALLBACK About(HWND, UINT, WPARAM, LPARAM);
 };
 
+class NoAccountError
+{
+public:
+	static INT_PTR CALLBACK ErrNoAcc(HWND, UINT, WPARAM, LPARAM);
+};
 
 class HelperFunctions
 {
